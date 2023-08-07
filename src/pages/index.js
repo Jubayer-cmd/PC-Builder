@@ -8,9 +8,11 @@ const inter = Inter({ subsets: ["latin"] });
 export default function HomePage({ products }) {
   return (
     <div>
-      <h1 className="pl-10 text-6xl">Welcome to PC builders!</h1>
-      <div className="grid grid-cols-3 gap-4">
-        {products.slice(0, 9).map((product) => (
+      <h1 className=" mb-14 text-5xl font-medium text-center">
+        Welcome to PCB -Bangladesh!
+      </h1>
+      <div className="grid grid-cols-4 gap-5">
+        {products.slice(0, 12).map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}
       </div>

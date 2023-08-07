@@ -4,18 +4,28 @@ import {
   GoogleSquareFilled,
   LinkedinFilled,
   LoginOutlined,
-  ProfileOutlined,
   TwitterSquareFilled,
   UserOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 const { Header, Content, Footer } = Layout;
 
 const RootLayout = ({ children }) => {
   const { data: session } = useSession();
-  console.log(session);
+  const router = useRouter();
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  // Handle category selection change
+  const handleCategoryChange = (e) => {
+    const selectedCategory = e.target.value;
+    setSelectedCategory(selectedCategory);
+    router.push(`/category/${selectedCategory}`);
+  };
+  console.log(selectedCategory);
   return (
     <Layout>
       <Header
@@ -40,12 +50,19 @@ const RootLayout = ({ children }) => {
           </h1>
         </div>
         <Menu theme="dark" mode="vertical" className={styles.menu_items}>
-          <Link href="/allNews">
-            <items>
-              <ProfileOutlined />
-              All News
-            </items>
-          </Link>
+          <select
+            className="bg-gray-200 text-gray-800 font-bold py-2 px-4 pr-8 rounded border-none outline-none"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          >
+            <option value="">Select Category</option>
+            <option value="Motherboard">Motherboard</option>
+            <option value="RAM">RAM</option>
+            <option value="CPU">CPU</option>
+            <option value="Power Supply">Power Supply</option>
+            <option value="Storage Device">Storage Device</option>
+            <option value="Monitor">Monitor</option>
+          </select>
           <Link href="/about">
             <items
               style={{
