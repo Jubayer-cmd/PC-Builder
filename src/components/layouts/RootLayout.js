@@ -2,10 +2,10 @@ import styles from "@/styles/Home.module.css";
 import {
   FacebookFilled,
   GoogleSquareFilled,
+  LaptopOutlined,
   LinkedinFilled,
   LoginOutlined,
   TwitterSquareFilled,
-  UserOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { signOut, useSession } from "next-auth/react";
@@ -66,14 +66,13 @@ const RootLayout = ({ children }) => {
             <option value="Monitor">Monitor</option>
             <option value="Others">Others</option>
           </select>
-          <Link href="/about">
-            <items
-              style={{
-                margin: "0px 25px",
-              }}
-            >
-              <UserOutlined />
-              About Us
+          <Link
+            href="/builder"
+            className="bg-violet-600 mx-3 mt-1 p-1 rounded hover:bg-violet-700 hover:text-white"
+          >
+            <items>
+              <LaptopOutlined />
+              PC Builder
             </items>
           </Link>
 

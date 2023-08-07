@@ -3,6 +3,12 @@ import RootLayout from "@/components/layouts/RootLayout";
 import styles from "@/styles/Home.module.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import { BiSolidMemoryCard } from "react-icons/bi";
+import { BsMotherboardFill } from "react-icons/bs";
+import { CgSmartphoneRam } from "react-icons/cg";
+import { GiProcessor } from "react-icons/gi";
+import { MdPower } from "react-icons/md";
+import { PiComputerTowerDuotone, PiMonitorFill } from "react-icons/pi";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function HomePage({ products }) {
@@ -27,49 +33,49 @@ export default function HomePage({ products }) {
           href={`/category/Motherboard`}
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded border-none"
         >
-          MotherBoard
+          <BsMotherboardFill /> MotherBoard
         </Link>
 
         <Link
           href={`/category/RAM`}
           className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded border-none"
         >
-          RAM
+          <CgSmartphoneRam /> RAM
         </Link>
 
         <Link
           href={`/category/CPU`}
           className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded border-none"
         >
-          CPU
+          <GiProcessor /> CPU
         </Link>
 
         <Link
           href={`/category/Power Supply`}
           className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded border-none"
         >
-          Power Supply
+          <MdPower /> Power Supply
         </Link>
 
         <Link
           href={`/category/Storage Device`}
           className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded border-none"
         >
-          Storage Device
+          <BiSolidMemoryCard /> Storage Device
         </Link>
 
         <Link
           href={`/category/Monitor`}
           className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded border-none"
         >
-          Monitor
+          <PiMonitorFill /> Monitor
         </Link>
 
         <Link
           href={`/category/Others`}
           className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded border-none"
         >
-          Others
+          <PiComputerTowerDuotone /> Others
         </Link>
       </div>
     </div>
