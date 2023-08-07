@@ -64,6 +64,13 @@ export default function HomePage({ products }) {
         >
           Monitor
         </Link>
+
+        <Link
+          href={`/category/Others`}
+          className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded border-none"
+        >
+          Others
+        </Link>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
+import ProductCard from "@/components/UI/ProductCard";
 import RootLayout from "@/components/layouts/RootLayout";
-import Image from "next/image";
 import { useRouter } from "next/router";
 
 export default function CategoryPage({ products }) {
@@ -12,27 +12,8 @@ export default function CategoryPage({ products }) {
         Components Category: {category}
       </h1>
       <div className="grid grid-cols-3 gap-4">
-        {products.map((product, index) => (
-          <div
-            className="bg-white p-4 shadow rounded hover:shadow-lg"
-            key={index}
-          >
-            <Image
-              className="w-full mb-4"
-              src={product.image}
-              alt="Product Image"
-              width={150}
-              height={150}
-              quality={80}
-            />
-            <h2 className="text-xl font-bold mb-2">{product.name}</h2>
-            <p className="text-gray-600 mb-2">Category: {product.category}</p>
-            <p className="text-gray-600 mb-2">Status: {product.status}</p>
-            <p className="text-green-500 font-bold mb-2">
-              Price: {product.price}
-            </p>
-            <p className="text-gray-600 mb-2">Rating: {product.rating}</p>
-          </div>
+        {products.map((product) => (
+          <ProductCard key={product._id} product={product} />
         ))}
       </div>
     </div>
@@ -71,6 +52,7 @@ export async function getStaticPaths() {
     "Power Supply",
     "Storage Device",
     "Monitor",
+    "Others",
   ];
   const paths = categories.map((category) => ({
     params: { category },

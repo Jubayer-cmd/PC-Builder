@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const uri = process.env.DATABASE_URL;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -20,8 +20,23 @@ async function run(req, res) {
       .collection("components");
 
     if (req.method === "GET") {
-      const data = await componentsCollection.find({}).toArray();
-      res.send({ message: "success", status: 200, data: data });
+      if (req.query.productId) {
+        // Fetch a single product detail by product ID
+        const productId = req.query.productId;
+        const product = await componentsCollection.findOne({
+          _id: new ObjectId(productId),
+        });
+
+        if (product) {
+          res.send({ message: "success", status: 200, data: product });
+        } else {
+          res.status(404).json({ message: "Product not found", status: 404 });
+        }
+      } else {
+        // Fetch all products
+        const data = await componentsCollection.find({}).toArray();
+        res.send({ message: "success", status: 200, data: data });
+      }
     }
 
     if (req.method === "POST") {

@@ -1,8 +1,19 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const ProductCard = ({ product }) => {
+  const router = useRouter();
+  const getpage = (id) => {
+    router.push(`/products/${id}`);
+  };
+
   return (
-    <div className="bg-white p-4 shadow rounded hover:shadow-lg">
+    <div
+      className="bg-white p-4 shadow rounded hover:shadow-lg"
+      onClick={() => {
+        getpage(product._id);
+      }}
+    >
       <Image
         className="w-full mb-4"
         src={product.image}

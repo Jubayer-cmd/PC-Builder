@@ -55,13 +55,16 @@ const RootLayout = ({ children }) => {
             value={selectedCategory}
             onChange={handleCategoryChange}
           >
-            <option value="">Select Category</option>
+            <option value="" disabled>
+              Select Category
+            </option>
             <option value="Motherboard">Motherboard</option>
             <option value="RAM">RAM</option>
             <option value="CPU">CPU</option>
             <option value="Power Supply">Power Supply</option>
             <option value="Storage Device">Storage Device</option>
             <option value="Monitor">Monitor</option>
+            <option value="Others">Others</option>
           </select>
           <Link href="/about">
             <items
