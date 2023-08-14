@@ -2,6 +2,7 @@ import ProductCard from "@/components/UI/ProductCard";
 import RootLayout from "@/components/layouts/RootLayout";
 import styles from "@/styles/Home.module.css";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import { BiSolidMemoryCard } from "react-icons/bi";
 import { BsMotherboardFill } from "react-icons/bs";
@@ -17,6 +18,13 @@ export default function HomePage({ products }) {
       <h1 className=" mb-14 text-5xl font-medium text-center">
         Welcome to PCB -Bangladesh!
       </h1>
+      <Image
+        src="https://i.pcmag.com/imagery/articles/05s2MQHvz6jLJNvysACdmq5-9.fit_lim.size_1600x900.v1656014887.jpg"
+        alt="banner"
+        width={1000}
+        height={400}
+        className="w-full text-center object-cover mb-10"
+      />
       <div className="grid grid-cols-4 gap-5">
         {products.slice(0, 12).map((product) => (
           <ProductCard key={product._id} product={product} />
@@ -87,7 +95,7 @@ HomePage.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/data");
+  const res = await fetch(`${process.env.apiUrl}/api/data`);
   const data = await res.json();
   return {
     props: {

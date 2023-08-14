@@ -49,7 +49,7 @@ ProductDetailPage.getLayout = function getLayout(page) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:3000/api/data");
+  const res = await fetch(`${process.env.apiUrl}/api/data`);
   const data = await res.json();
   // Filter the products based on the 'category' parameter from the route
   const paths = data?.data.map((product) => ({
@@ -65,10 +65,9 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:3000/api/product/${params.productId}`
+    `${process.env.apiUrl}/api/product/${params.productId}`
   );
   const data = await res.json();
-  console.log(data);
   return {
     props: {
       product: data.data,

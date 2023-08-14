@@ -25,7 +25,7 @@ CategoryPage.getLayout = function getLayout(page) {
 };
 
 export async function getStaticProps({ params }) {
-  const res = await fetch("http://localhost:3000/api/data");
+  const res = await fetch(`${process.env.apiUrl}/api/data`);
   const data = await res.json();
 
   // Filter the products based on the 'category' parameter from the route

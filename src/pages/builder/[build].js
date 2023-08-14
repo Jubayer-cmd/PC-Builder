@@ -68,9 +68,8 @@ BuildPage.getLayout = function getLayout(page) {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  console.log(params.build);
   const res = await fetch(
-    `http://localhost:3000/api/category?build=${params.build}`
+    `${process.env.apiUrl}/api/category?build=${params.build}`
   );
   const product = await res.json();
   let products = product?.data;

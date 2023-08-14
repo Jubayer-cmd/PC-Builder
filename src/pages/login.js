@@ -1,5 +1,5 @@
 import RootLayout from "@/components/layouts/RootLayout";
-import { GithubOutlined, GoogleOutlined } from "@ant-design/icons";
+import { GithubOutlined } from "@ant-design/icons";
 import { Card, Space } from "antd";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -19,27 +19,13 @@ function LoginPage() {
             className="bg-gray-200 p-2 text-lg font-medium hover:bg-slate-600 cursor-pointer hover:text-white"
             onClick={() =>
               signIn("github", {
-                callbackUrl: callbackUrl || "http://localhost:3000/",
+                callbackUrl: callbackUrl || `${process.env.apiUrl}`,
               })
             }
           >
             Login with Github{" "}
             <span>
               <GithubOutlined />
-            </span>
-          </p>
-
-          <p
-            className="bg-gray-200 p-2 text-lg font-medium hover:bg-slate-600 cursor-pointer hover:text-white"
-            onClick={() =>
-              signIn("google", {
-                callbackUrl: callbackUrl || "http://localhost:3000/",
-              })
-            }
-          >
-            Login with Google{" "}
-            <span>
-              <GoogleOutlined />
             </span>
           </p>
         </Card>
